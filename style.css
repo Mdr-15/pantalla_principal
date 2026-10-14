@@ -114,3 +114,41 @@ body {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
+/* --- ADAPTACIÓN ESPECIAL PARA PANTALLAS DE CELULARES --- */
+@media (max-width: 480px) {
+    body {
+        /* Cambia el ajuste para que la cabina quepa completa a lo ancho del teléfono */
+        background-size: contain; 
+        
+        /* Centra la imagen vertical y horizontalmente */
+        background-position: center center; 
+        
+        /* El color de fondo oscuro rellenará los espacios arriba y abajo */
+        background-color: #030508; 
+    }
+
+    /* Hacemos el contenedor un poquito más compacto para que no tape la cabina */
+    .intro-container {
+        padding: 15px;
+    }
+
+    /* Reducimos ligeramente el tamaño del logo para celulares */
+    .logo-wrapper {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+
+    /* Ajustamos el tamaño de la letra del eslogan */
+    .slogan {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+
+    /* Hacemos el botón un poco más cómodo para presionar con el pulgar */
+    .btn-enter {
+        font-size: 1rem;
+        padding: 12px 40px;
+    }
+}
+
