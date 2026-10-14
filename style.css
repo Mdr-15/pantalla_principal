@@ -32,20 +32,27 @@ body {
     animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Efecto de iluminación trasera para tu logotipo circular */
+/* Contenedor del logotipo modificado */
 .logo-wrapper {
     width: 280px;
     height: 280px;
     margin-bottom: 25px;
     border-radius: 50%;
-    /* Crea un resplandor naranja/cian que combina el logo con el fondo */
+    overflow: hidden; /* Oculta las esquinas cuadradas si el logo tiene fondo */
+    
+    /* Mantenemos el resplandor de fondo */
     box-shadow: 0 0 40px rgba(242, 142, 43, 0.4), 0 0 80px rgba(71, 229, 240, 0.2);
-}
-
+    
+    /* AGREGADO: Animación para que el pollo flote suavemente como en el espacio */
+    animation: flotarEspacial 4s ease-in-out infinite;
 .main-logo {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover; /* Cambiado a cover para ajustar el círculo si tiene bordes extra */
+    
+    /* OPCIONAL: Si no puedes quitarle la cuadrícula blanca al logo con un editor, 
+       esta línea ayuda a camuflar los tonos grises/blancos con el fondo oscuro */
+    mix-blend-mode: lighten; 
 }
 
 /* Estilo del eslogan */
@@ -93,8 +100,15 @@ body {
     color: #47e5f0;
 }
 
-/* Animación de entrada suave al cargar la página */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+/* NUEVA ANIMACIÓN: Efecto flotante de gravedad cero */
+@keyframes flotarEspacial {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px); /* Sube un poco */
+    }
+    100% {
+        transform: translateY(0px); /* Vuelve a su posición */
+    }
 }
