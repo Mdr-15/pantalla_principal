@@ -39,6 +39,15 @@
             filter: drop-shadow(0 0 15px rgba(255, 145, 0, 0.3));
         }
 
+        .logo-img {
+          max-width: 220px;
+          width: 100%;
+          filter: drop-shadow(0 0 15px rgba(255, 145, 0, 0.3));
+          /* Este truco hace transparente el fondo negro o blanco puro */
+         mix-blend-mode: screen; 
+       }  
+
+
         /* 3. BOTÓN CENTRAL NEÓN */
         .cta-container {
             margin-bottom: 40px;
