@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido a Space Wings</title>
     <!-- Subimos a la versión 4 para obligar a refrescar la caché del celular -->
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -29,14 +29,31 @@
 
         <!-- Botón de llamado a la acción (conecta a tu menú) -->
         <a href="https://pages.dev" class="btn-enter">VER MENÚ</a>
+        
 
-  <!-- NUEVO: Footer Espacial de Control -->
+<!-- NUEVO: Footer Espacial de Control con Datos Informativos -->
         <footer class="space-footer">
             <div class="footer-divider"></div>
             <div class="footer-links">
-                <a href="https://instagram.com" target="_blank" class="footer-item">🪐 INSTAGRAM</a>
-                <a href="https://wa.me" target="_blank" class="footer-item">📞 SOPORTE BASE</a>
-                <a href="https://google.com" target="_blank" class="footer-item">🏡 COORDENADAS</a>
+                
+                <!-- Bloque 1: Instagram -->
+                <div class="footer-block">
+                    <span class="footer-item">🪐 INSTAGRAM</span>
+                    <p class="footer-data">@spacewings.mx</p>
+                </div>
+
+                <!-- Bloque 2: WhatsApp / Teléfono -->
+                <div class="footer-block">
+                    <span class="footer-item">📞 SOPORTE BASE</span>
+                    <p class="footer-data">341 159 4355</p>
+                </div>
+
+                <!-- Bloque 3: Dirección -->
+                <div class="footer-block">
+                    <span class="footer-item">🏡 COORDENADAS</span>
+                    <p class="footer-data">Independencia #815</p>
+                </div>
+
             </div>
             <p class="copyright">© 2026 SPACE WINGS. TODOS LOS DERECHOS RESERVADOS.</p>
         </footer>
