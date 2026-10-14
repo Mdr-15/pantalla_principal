@@ -6,14 +6,13 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Fondo oscuro espacial para toda la página */
+/* CAMBIO CLAVE: Fondo con imagen real de nave/espacio */
 body {
-    background-color: #0b0f19; /* Azul noche muy oscuro */
-    background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
-    background-size: 550px 550px, 350px 350px;
-    background-position: 0 0, 40px 60px;
+    background-color: #05070c; /* Color de respaldo oscuro */
+    background-image: url('fondo-espacial.jpg'); /* <-- AQUÍ VA TU IMAGEN DE FONDO */
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla sin deformarse */
+    background-position: center center; /* La centra perfectamente */
+    background-repeat: no-repeat;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -24,76 +23,93 @@ body {
 /* Contenedor centralizado */
 .intro-container {
     text-align: center;
-    max-width: 500px;
-    padding: 20px;
+    max-width: 600px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     animation: fadeIn 1.5s ease-in-out;
+    isolation: isolate; 
 }
 
-/* Efecto de iluminación trasera para tu logotipo circular */
+/* Contenedor de tu logotipo circular */
 .logo-wrapper {
-    width: 280px;
-    height: 280px;
-    margin-bottom: 25px;
+    width: 260px;
+    height: 260px;
+    margin-bottom: 20px;
     border-radius: 50%;
-    /* Crea un resplandor naranja/cian que combina el logo con el fondo */
-    box-shadow: 0 0 40px rgba(242, 142, 43, 0.4), 0 0 80px rgba(71, 229, 240, 0.2);
+    
+    /* Resplandor neón azul/cian idéntico al de la imagen de referencia */
+    box-shadow: 0 0 50px rgba(71, 229, 240, 0.6), inset 0 0 20px rgba(71, 229, 240, 0.3);
+    animation: flotarEspacial 4s ease-in-out infinite;
 }
 
 .main-logo {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 50%;
+    mix-blend-mode: lighten; /* Sigue limpiando el fondo de tu logo */
 }
 
-/* Estilo del eslogan */
+/* Estilo del eslogan (Texto en mayúsculas y blanco brillante) */
 .slogan {
     color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase; /* Lo hace ver más moderno y militar/espacial */
+    letter-spacing: 2px;
+    margin-bottom: 35px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 2px 4px rgba(0,0,0,0.8);
 }
 
-/* Botón principal Cian brillante (Igual al de tu menú) */
+/* El botón con el súper brillo Neón de la foto */
 .btn-enter {
     display: inline-block;
-    background-color: #47e5f0; /* El tono cian de tu app */
+    background-color: #47e5f0; 
     color: #0b0f19;
     text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 15px 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 16px 60px;
     border-radius: 30px;
-    letter-spacing: 1.5px;
-    box-shadow: 0 4px 20px rgba(71, 229, 240, 0.4);
-    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    
+    /* Efecto de resplandor exterior intenso (Glow) */
+    box-shadow: 0 0 25px rgba(71, 229, 240, 0.8), 0 0 50px rgba(71, 229, 240, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 /* Efecto al pasar el mouse por encima del botón */
 .btn-enter:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 30px rgba(71, 229, 240, 0.7);
+    transform: scale(1.05); /* Se hace un poquito más grande */
     background-color: #ffffff;
+    box-shadow: 0 0 35px rgba(255, 255, 255, 1), 0 0 60px rgba(71, 229, 240, 0.8);
 }
 
 /* Enlace secundario de horarios */
 .btn-secondary {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
+    color: #47e5f0;
+    opacity: 0.8;
+    text-decoration: underline;
     font-size: 0.9rem;
-    margin-top: 20px;
-    transition: color 0.3s;
+    margin-top: 25px;
+    font-weight: 600;
+    transition: opacity 0.3s;
 }
 
 .btn-secondary:hover {
-    color: #47e5f0;
+    opacity: 1;
 }
 
-/* Animación de entrada suave al cargar la página */
+/* ANIMACIÓN: Flotar suave */
+@keyframes flotarEspacial {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Animación de entrada */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
