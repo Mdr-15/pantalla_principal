@@ -185,12 +185,18 @@ body {
     gap: 15px;
 }
 
-/* Línea divisoria difuminada de estilo neón */
+/* Línea divisoria de estilo neón CORREGIDA y REFORZADA */
 .footer-divider {
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(71, 229, 240, 0.5), transparent);
-    box-shadow: 0 0 10px rgba(71, 229, 240, 0.3);
+    width: 85% !important; /* Un poco más ancha para que luzca en el celular */
+    height: 2px !important; /* Grosor de 2px para que se note */
+    margin: 15px auto !important; /* Asegura espacio arriba y abajo */
+    display: block !important; /* Fuerza a que se renderice como elemento visible */
+    
+    /* Degradado cian brillante sólido en el centro */
+    background: linear-gradient(90deg, transparent, #47e5f0, transparent) !important;
+    
+    /* Súper resplandor Neón en la base */
+    box-shadow: 0 0 12px #47e5f0, 0 0 25px rgba(71, 229, 240, 0.6) !important;
 }
 
 /* Distribución de los enlaces */
