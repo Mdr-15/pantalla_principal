@@ -9,7 +9,7 @@
 /* CAMBIO CLAVE: Fondo con imagen real de nave/espacio */
 body {
     background-color: #05070c; /* Color de respaldo oscuro */
-    background-image: url('fondo-espacial.jpg'); /* <-- AQUÍ VA TU IMAGEN DE FONDO */
+    background-image: url('fondo-espacial.webp'); /* <-- AQUÍ VA TU IMAGEN DE FONDO */
     background-size: cover; /* Hace que la imagen cubra toda la pantalla sin deformarse */
     background-position: center center; /* La centra perfectamente */
     background-repeat: no-repeat;
