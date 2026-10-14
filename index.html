@@ -41,33 +41,36 @@
             clip-path: circle(48% at 50% 50%);
         }  
 
-        /* BOTÓN CENTRAL DE ACCIÓN */
-        .cta-container {
-            margin-bottom: 40px;
-        }
-        .btn-mision {
-            background-color: #00e5ff;
-            color: #050b14;
-            font-size: 1.25rem;
-            font-weight: bold;
-            padding: 14px 45px;
-            border-radius: 8px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
-            border: 2px solid #00e5ff;
-            transition: all 0.3s ease;
-        }
-        .btn-mision:hover {
-            background-color: transparent;
-            color: #00e5ff;
-            box-shadow: 0 0 35px rgba(0, 229, 255, 0.9);
-            transform: scale(1.03);
-        }
+      /* BOTÓN CENTRAL DE ACCIÓN */
+.cta-container {
+    margin-bottom: 40px;
+    text-align: center; /* Asegura que el botón esté perfectamente centrado */
+}
+
+.btn-mision {
+    background-color: #00e5ff;
+    color: #050b14;
+    font-size: 1rem;            /* Reducido de 1.25rem a 1rem para un texto más compacto */
+    font-weight: bold;
+    padding: 10px 25px;         /* Reducido de 14px 45px a 10px 25px (más delgado y corto) */
+    border-radius: 6px;         /* Esquinas ligeramente más finas */
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;        /* Reducido de 2px a 1px para juntar más las letras */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;                   /* Ajustado el espacio con el ícono */
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); /* Sombra de brillo neón más discreta */
+    border: 2px solid #00e5ff;
+    transition: all 0.3s ease;
+}
+
+.btn-mision:hover {
+    background-color: transparent;
+    color: #00e5ff;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
+    transform: scale(1.02);     /* Efecto de agrandado al pasar el mouse más suave */
+}
 
                 /* 4. PLATILLOS PRINCIPALES (CARRUSEL DESLIZABLE) */
         .menu-preview {
