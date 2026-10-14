@@ -114,41 +114,48 @@ body {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
-/* --- ADAPTACIÓN ESPECIAL PARA PANTALLAS DE CELULARES --- */
+/* --- ADAPTACIÓN ULTRA-RESPONSIVA PARA PANTALLAS DE CELULARES (CORREGIDO) --- */
 @media (max-width: 480px) {
     body {
-        /* Cambia el ajuste para que la cabina quepa completa a lo ancho del teléfono */
-        background-size: contain; 
+        /* Fuerza a la cabina a rellenar el 100% del alto de la pantalla del celular sin deformarse */
+        background-size: auto 100vh; 
         
-        /* Centra la imagen vertical y horizontalmente */
+        /* Centra el fondo para que la ventana y la Tierra queden en medio del teléfono */
         background-position: center center; 
         
-        /* El color de fondo oscuro rellenará los espacios arriba y abajo */
-        background-color: #030508; 
+        background-repeat: no-repeat;
     }
 
-    /* Hacemos el contenedor un poquito más compacto para que no tape la cabina */
+    /* Compactamos el contenedor para darle aire y visibilidad a los lados de la nave */
     .intro-container {
-        padding: 15px;
+        padding: 10px;
+        width: 90%;
     }
 
-    /* Reducimos ligeramente el tamaño del logo para celulares */
+    /* Reducimos el tamaño del pollo astronauta para que no tape los controles del fondo */
     .logo-wrapper {
-        width: 200px;
-        height: 200px;
+        width: 170px;
+        height: 170px;
         margin-bottom: 15px;
+        box-shadow: 0 0 30px rgba(71, 229, 240, 0.5);
     }
 
-    /* Ajustamos el tamaño de la letra del eslogan */
+    /* El eslogan se hace más pequeño para no saturar la pantalla vertical */
     .slogan {
-        font-size: 1.1rem;
-        margin-bottom: 25px;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
     }
 
-    /* Hacemos el botón un poco más cómodo para presionar con el pulgar */
+    /* Ajustamos el botón para que sea cómodo y estilizado en celulares */
     .btn-enter {
-        font-size: 1rem;
-        padding: 12px 40px;
+        font-size: 0.95rem;
+        padding: 12px 35px;
+        letter-spacing: 1px;
+    }
+    
+    .btn-secondary {
+        margin-top: 15px;
+        font-size: 0.8rem;
     }
 }
-
