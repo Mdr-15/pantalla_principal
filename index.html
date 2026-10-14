@@ -264,8 +264,11 @@
    ANEXO DE ESTILOS: MÓVIL VS COMPUTADORA (Reemplaza tus @media anteriores)
    ========================================================================== */
 
-/* --- 1. CONFIGURACIÓN PARA COMPUTADORAS (Pantallas grandes) --- */
+/* ==========================================================================
+   1. CONFIGURACIÓN COMPLETA PARA COMPUTADORAS (Pantallas de 901px en adelante)
+   ========================================================================== */
 @media (min-width: 901px) {
+    /* Círculos de especialidades superiores */
     .menu-preview {
         display: flex;
         justify-content: center; /* Centra los 3 círculos */
@@ -281,18 +284,40 @@
         text-align: center;
     }
 
+    /* Carrusel inferior de imágenes */
+    .galeria-container {
+        display: flex;
+        justify-content: center; /* Centra las fotos horizontales */
+        gap: 20px;
+        overflow: visible;       /* Muestra todas las fotos juntas en PC */
+        width: 100%;
+    }
+
     .galeria-item {
-        flex: 0 0 360px;
+        flex: 1;                 /* Reparte el ancho de forma idéntica */
+        max-width: 280px;        /* Mantiene el tamaño ideal de la captura */
+    }
+
+    /* Datos del pie de página en PC (Alineación horizontal limpia si se desea) */
+    .datos-directos {
+        display: flex;
+        flex-direction: row;     /* Se ponen uno al lado del otro en PC */
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
     }
 }
 
-/* --- 2. CONFIGURACIÓN PARA CELULARES Y TABLETS (Menores a 900px) --- */
+/* ==========================================================================
+   2. CONFIGURACIÓN COMPLETA PARA CELULARES Y TABLETS (Pantallas de 900px hacia abajo)
+   ========================================================================== */
 @media (max-width: 900px) {
+    /* Deslizamiento de los círculos superiores */
     .menu-preview {
         display: flex;
-        overflow-x: auto;        /* Activa el deslizamiento lateral automático */
-        scroll-behavior: smooth; /* Movimiento fluido por script */
-        scrollbar-width: none;   /* Oculta la barra de scroll en Firefox */
+        overflow-x: auto;        /* Activa el desplazamiento lateral con el dedo */
+        scroll-behavior: smooth;
+        scrollbar-width: none;   /* Oculta la barra en Firefox */
         gap: 30px;
         padding: 20px;
         width: 100%;
@@ -303,20 +328,40 @@
     }
 
     .platillo-card {
-        flex: 0 0 85%;           /* Cada platillo toma el 85% de la pantalla móvil */
+        flex: 0 0 85%;           /* Cada círculo toma el 85% de la pantalla móvil */
         text-align: center;
     }
-}
 
-/* --- 3. REAJUSTES EXCLUSIVOS PARA PANTALLAS PEQUEÑAS (Menores a 768px) --- */
-@media (max-width: 768px) {
+    /* Deslizamiento del carrusel inferior de fotos */
+    .galeria-container {
+        display: flex;
+        overflow-x: auto;        /* Activa el deslizamiento lateral con el dedo */
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+    }
+
+    .galeria-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .galeria-item {
+        flex: 0 0 80%;           /* Muestra la foto casi completa en celulares */
+    }
+
+    /* Ajustes específicos para teléfonos muy pequeños (Menores a 768px) */
     .menu-preview {
         align-items: center;
     }
     
     .datos-directos {
-        flex-direction: column;
+        display: flex;
+        flex-direction: column;  /* Tarjetas de contacto una debajo de otra en móvil */
+        align-items: center;
         gap: 15px;
+    }
+    
+    .bloque-dato {
+        width: 90%;              /* Las tarjetas de contacto se adaptan al ancho del celular */
     }
     
     .btn-mision {
@@ -324,7 +369,7 @@
         padding: 12px 30px;
     }
 }
-    
+      
     
     </style>
 </head>
@@ -465,7 +510,7 @@
                 } else {
                     contenedorMenu.scrollBy({ left: anchoTarjeta, behavior: 'smooth' }); // Avanza
                 }
-            }, 4000); // 4 segundos por transición
+            }, 3000); // 4 segundos por transición
         }
     }
 
@@ -481,6 +526,40 @@
     // Arranque inicial y eventos del sistema
     iniciarAutoplayMenu();
     window.addEventListener('resize', () => iniciarAutoplayMenu());
+
+    const contenedorGaleria = document.querySelector('.galeria-container');
+let intervaloGaleria = null;
+
+function iniciarAutoplayGaleria() {
+    if (intervaloGaleria) clearInterval(intervaloGaleria);
+
+    if (window.innerWidth < 900 && contenedorGaleria) {
+        intervaloGaleria = setInterval(() => {
+            const item = contenedorGaleria.querySelector('.galeria-item');
+            if (!item) return;
+
+            const anchoItem = item.offsetWidth + 20; // Ancho de imagen + gap
+            const scrollMaximo = contenedorGaleria.scrollWidth - contenedorGaleria.clientWidth;
+
+            if (contenedorGaleria.scrollLeft >= scrollMaximo - 10) {
+                contenedorGaleria.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                contenedorGaleria.scrollBy({ left: anchoItem, behavior: 'smooth' });
+            }
+        }, 3500); // Se mueve cada 4.5 segundos
+    }
+}
+
+if (contenedorGaleria) {
+    contenedorGaleria.addEventListener('touchstart', () => clearInterval(intervaloGaleria));
+    contenedorGaleria.addEventListener('mousedown', () => clearInterval(intervaloGaleria));
+    contenedorGaleria.addEventListener('touchend', () => iniciarAutoplayGaleria());
+    contenedorGaleria.addEventListener('mouseup', () => iniciarAutoplayGaleria());
+}
+
+iniciarAutoplayGaleria();
+window.addEventListener('resize', () => iniciarAutoplayGaleria());
+
 </script>
 
 </body>
