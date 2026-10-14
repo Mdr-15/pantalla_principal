@@ -368,70 +368,82 @@
         <div class="lightbox-cerrar">✕ Clic fuera o en cualquier lado para cerrar</div>
     </dialog>
 
-    <!-- SCRIPT DE LÓGICA DE CLIC -->
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
+   <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
 
-        // Busca todas las imágenes de la galería inferior y les añade la función de agrandarse
-        document.querySelectorAll('.galeria-item img').forEach(imagen => {
-            imagen.addEventListener('click', (e) => {
-                lightboxImg.src = e.target.src;
-                lightboxImg.alt = e.target.alt;
-                lightbox.showModal();
-            });
+    // Busca todas las imágenes de la galería inferior y les añade la función de agrandarse
+    document.querySelectorAll('.galeria-item img').forEach(imagen => {
+        imagen.addEventListener('click', (e) => {
+            lightboxImg.src = e.target.src;
+            lightboxImg.alt = e.target.alt;
+            lightbox.showModal();
         });
-    </script>
-    
-    <script>
-        // LÓGICA PARA QUE LAS TRES ESPECIALIDADES CAMBIEN SOLAS EN MÓVIL
-        const contenedorMenu = document.querySelector('.menu-preview');
-        let intervaloMenu;
+    });
 
-        function iniciarAutoplayMenu() {
-            // Solo se activa el movimiento si la pantalla es de celular/tablet (menor a 900px)
-            if (window.innerWidth < 900) {
-                intervaloMenu = setInterval(() => {
-                    const tarjeta = contenedorMenu.querySelector('.platillo-card');
-                    if (!tarjeta) return;
-                    
-                    const anchoTarjeta = tarjeta.offsetWidth + 30; // Ancho de la tarjeta + gap
-                    const scrollMaximo = contenedorMenu.scrollWidth - contenedorMenu.clientWidth;
+    // CORRECCIÓN: Permite cerrar el lightbox si el usuario hace clic fuera de la imagen (en el fondo oscuro)
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.close();
+        }
+    });
+</script>
 
-                    // Si llega al final de las 3 especialidades, regresa al inicio suavemente
-                    if (contenedorMenu.scrollLeft >= scrollMaximo - 5) {
-                        contenedorMenu.scrollTo({ left: 0, behavior: 'smooth' });
-                    } else {
-                        // Si no, avanza a la siguiente especialidad
-                        contenedorMenu.scrollBy({ left: anchoTarjeta, behavior: 'smooth' });
-                    }
-                }, 4000); // Cambia de platillo cada 4 segundos
-            }
+<script>
+    // LÓGICA PARA QUE LAS TRES ESPECIALIDADES CAMBIEN SOLAS EN MÓVIL
+    const contenedorMenu = document.querySelector('.menu-preview');
+    let intervaloMenu = null; // Inicializado correctamente en null
+
+    function iniciarAutoplayMenu() {
+        // CORRECCIÓN CRÍTICA: Limpiar cualquier intervalo activo antes de crear uno nuevo 
+        // Esto evita que el carrusel se acelere al cambiar el tamaño de pantalla o dar toques rápidos
+        if (intervaloMenu) {
+            clearInterval(intervaloMenu);
         }
 
-        // Detener el avance automático si el usuario lo mueve manualmente con el dedo
+        // Solo se activa el movimiento si la pantalla es de celular/tablet (menor a 900px)
+        if (window.innerWidth < 900 && contenedorMenu) {
+            intervaloMenu = setInterval(() => {
+                const tarjeta = contenedorMenu.querySelector('.platillo-card');
+                if (!tarjeta) return;
+                
+                const anchoTarjeta = tarjeta.offsetWidth + 30; // Ancho de la tarjeta + gap
+                const scrollMaximo = contenedorMenu.scrollWidth - contenedorMenu.clientWidth;
+
+                // Si llega al final de las 3 especialidades, regresa al inicio suavemente
+                if (contenedorMenu.scrollLeft >= scrollMaximo - 10) {
+                    contenedorMenu.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    // Si no, avanza a la siguiente especialidad
+                    contenedorMenu.scrollBy({ left: anchoTarjeta, behavior: 'smooth' });
+                }
+            }, 4000); // Cambia de platillo cada 4 segundos
+        }
+    }
+
+    // Verificar que el contenedor exista en el HTML para evitar errores en consola
+    if (contenedorMenu) {
+        // Detener el avance automático si el usuario lo mueve manualmente con el dedo o mouse
         contenedorMenu.addEventListener('touchstart', () => clearInterval(intervaloMenu));
         contenedorMenu.addEventListener('mousedown', () => clearInterval(intervaloMenu));
 
         // Recomenzar el movimiento automático cuando el usuario suelta la pantalla
         contenedorMenu.addEventListener('touchend', () => {
-            clearInterval(intervaloMenu);
             iniciarAutoplayMenu();
         });
         contenedorMenu.addEventListener('mouseup', () => {
-            clearInterval(intervaloMenu);
             iniciarAutoplayMenu();
         });
+    }
 
-        // Iniciar al cargar la página
+    // Iniciar al cargar la página
+    iniciarAutoplayMenu();
+
+    // Reajustar si el usuario cambia el orientación o tamaño de la pantalla
+    window.addEventListener('resize', () => {
         iniciarAutoplayMenu();
-
-        // Reajustar si el usuario cambia el tamaño de la pantalla
-        window.addEventListener('resize', () => {
-            clearInterval(intervaloMenu);
-            iniciarAutoplayMenu();
-        });
-    </script>
+    });
+</script>
 
 </body>
 </html>
