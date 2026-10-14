@@ -122,17 +122,25 @@
             line-height: 1.3;
         }
 
-        /* En pantallas grandes (computadoras) se muestran las 3 fijas alineadas */
-        @media (min-width: 900px) {
-            .menu-preview {
-                justify-content: center;
-                overflow-x: visible;
-            }
-            .platillo-card {
-                flex: 1;
-                max-width: 250px;
-            }
-        }
+       @media (max-width: 900px) {
+    .menu-scroll {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
+        padding: 10px;
+    }
+    
+    .menu-scroll::-webkit-scrollbar {
+        display: none; /* Oculta la barra de scroll en Chrome y Safari */
+    }
+
+    .platillo-card {
+        flex: 0 0 80%; /* Hace que cada platillo ocupe el 80% de la pantalla del celular */
+        text-align: center;
+    }
+}
 
         /* TARJETAS FIJAS DE DATOS Y HORARIOS */
         .datos-directos {
@@ -297,9 +305,11 @@
         <!-- Reemplaza el '#' por tu enlace interno del menú de pedidos o un link de mensajería -->
         <a href="#" class="btn-mision">🚀 Iniciar Misión: Ver Menú 🚀</a>
     </div>
-
-    <!-- VISTA PREVIA PLATILLOS (CÍRCULOS) -->
-    <section class="menu-preview">
+    
+<!-- VISTA PREVIA PLATILLOS (CÍRCULOS) -->
+<section class="menu-preview">
+    <!-- Contenedor necesario para activar el desplazamiento horizontal -->
+    <div class="menu-scroll">
         <div class="platillo-card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiPQyTYWx-ZcYXqioY1wr9Zw--HVz3SarMSIzInFMsxsRVv6l7a7xZtATn&s=10" alt="Alitas" class="img-circulo">
             <h3>Alitas</h3>
@@ -315,7 +325,9 @@
             <h3>Palomitas</h3>
             <p>Palomitas Estelares</p>
         </div>
-    </section>
+    </div>
+</section>
+
 
         <!-- CARRUSEL DESLIZABLE INFERIOR -->
     <footer class="galeria-inferior">
