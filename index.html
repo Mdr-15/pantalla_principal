@@ -382,6 +382,56 @@
             });
         });
     </script>
+    
+    <script>
+        // LÓGICA PARA QUE LAS TRES ESPECIALIDADES CAMBIEN SOLAS EN MÓVIL
+        const contenedorMenu = document.querySelector('.menu-preview');
+        let intervaloMenu;
+
+        function iniciarAutoplayMenu() {
+            // Solo se activa el movimiento si la pantalla es de celular/tablet (menor a 900px)
+            if (window.innerWidth < 900) {
+                intervaloMenu = setInterval(() => {
+                    const tarjeta = contenedorMenu.querySelector('.platillo-card');
+                    if (!tarjeta) return;
+                    
+                    const anchoTarjeta = tarjeta.offsetWidth + 30; // Ancho de la tarjeta + gap
+                    const scrollMaximo = contenedorMenu.scrollWidth - contenedorMenu.clientWidth;
+
+                    // Si llega al final de las 3 especialidades, regresa al inicio suavemente
+                    if (contenedorMenu.scrollLeft >= scrollMaximo - 5) {
+                        contenedorMenu.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        // Si no, avanza a la siguiente especialidad
+                        contenedorMenu.scrollBy({ left: anchoTarjeta, behavior: 'smooth' });
+                    }
+                }, 4000); // Cambia de platillo cada 4 segundos
+            }
+        }
+
+        // Detener el avance automático si el usuario lo mueve manualmente con el dedo
+        contenedorMenu.addEventListener('touchstart', () => clearInterval(intervaloMenu));
+        contenedorMenu.addEventListener('mousedown', () => clearInterval(intervaloMenu));
+
+        // Recomenzar el movimiento automático cuando el usuario suelta la pantalla
+        contenedorMenu.addEventListener('touchend', () => {
+            clearInterval(intervaloMenu);
+            iniciarAutoplayMenu();
+        });
+        contenedorMenu.addEventListener('mouseup', () => {
+            clearInterval(intervaloMenu);
+            iniciarAutoplayMenu();
+        });
+
+        // Iniciar al cargar la página
+        iniciarAutoplayMenu();
+
+        // Reajustar si el usuario cambia el tamaño de la pantalla
+        window.addEventListener('resize', () => {
+            clearInterval(intervaloMenu);
+            iniciarAutoplayMenu();
+        });
+    </script>
 
 </body>
 </html>
