@@ -34,15 +34,13 @@
             margin-bottom: 25px;
         }
         
-        
         .logo-img {
-          max-width: 220px;
-          width: 100%;
-          filter: drop-shadow(0 0 15px rgba(255, 145, 0, 0.3));
-          /* Este truco hace transparente el fondo negro o blanco puro */
-         mix-blend-mode: screen; 
-       }  
-
+            max-width: 220px;
+            width: 100%;
+            filter: drop-shadow(0 0 15px rgba(255, 145, 0, 0.3));
+            /* Recorte circular para eliminar las esquinas blancas del recuadro JPG */
+            clip-path: circle(48% at 50% 50%);
+        }  
 
         /* 3. BOTÓN CENTRAL NEÓN */
         .cta-container {
@@ -97,9 +95,9 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             background-color: #101726;
         }
-        /* Forma hexagonal para las palomitas como en tu imagen */
+        /* Contenedor geométrico para las palomitas como en tu imagen */
         .platillo-card:last-child .img-circulo {
-            border-radius: 20px; /* Simula el contenedor geométrico */
+            border-radius: 24px; 
         }
         .platillo-card h3 {
             font-size: 1.3rem;
@@ -112,7 +110,7 @@
             line-height: 1.3;
         }
 
-        /* 5. SECCIÓN DIRECTA: DOMICILIO Y HORARIOS (REEMPLAZA LOS BOTONES) */
+        /* 5. SECCIÓN DIRECTA: DOMICILIO Y HORARIOS */
         .datos-directos {
             display: flex;
             justify-content: center;
@@ -187,6 +185,7 @@
             font-weight: bold;
             font-size: 0.95rem;
             letter-spacing: 1px;
+            color: #ffffff;
         }
 
         /* 7. ADAPTACIÓN PARA CELULARES */
@@ -212,7 +211,7 @@
 </head>
 <body>
 
-    <!-- LOGO PRINCIPAL (Pon aquí la ruta de tu logo de pollo astronauta) -->
+    <!-- LOGO PRINCIPAL -->
     <div class="logo-container">
         <img src="img/tu-logo-astronauta.webp" alt="Space Wings" class="logo-img">
     </div>
@@ -225,7 +224,6 @@
     <!-- VISTA PREVIA PLATILLOS (CÍRCULOS) -->
     <section class="menu-preview">
         <div class="platillo-card">
-            <!-- Cambia el link de la imagen por tus fotos reales si deseas -->
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiPQyTYWx-ZcYXqioY1wr9Zw--HVz3SarMSIzInFMsxsRVv6l7a7xZtATn&s=10" alt="Alitas" class="img-circulo">
             <h3>Alitas</h3>
             <p>Alitas Intergalácticas:<br>Crujientes como un meteorito</p>
@@ -258,15 +256,15 @@
     <footer class="galeria-inferior">
         <div class="galeria-grid">
             <div class="galeria-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vuoe0rhXLIP87mASh_hWDOvNgQUGOkO4Ib0aSA4WNw&s=10" alt="Combo Estelar">
+                <img src="https://unsplash.com" alt="Combo Estelar">
                 <div class="galeria-texto">Nuestro Combo Estelar</div>
             </div>
             <div class="galeria-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-oFkYVx9FGQ5ebe2AwA4r4_iLbqmnhrFTYavn8_cNBg&s=10" alt="Fuego Interestelar">
+                <img src="https://unsplash.com" alt="Fuego Interestelar">
                 <div class="galeria-texto">Fuego Interestelar</div>
             </div>
             <div class="galeria-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiPQyTYWx-ZcYXqioY1wr9Zw--HVz3SarMSIzInFMsxsRVv6l7a7xZtATn&s=10" alt="Papas">
+                <img src="https://unsplash.com" alt="Papas">
                 <div class="galeria-texto">Papas de la Nebulosa</div>
             </div>
         </div>
