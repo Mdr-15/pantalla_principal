@@ -1,66 +1,215 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a Space Wings</title>
-    <!-- Subimos a la versión 4 para obligar a refrescar la caché del celular -->
-    <link rel="stylesheet" href="style.css?v=10">
+    <title>Space Wings - Bienvenidos</title>
+    <style>
+        /* 1. RESETEO Y FUENTES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            /* Reemplaza esta URL por la imagen de tu fondo espacial si tienes una */
+            background-image: linear-gradient(rgba(11, 15, 25, 0.6), rgba(11, 15, 25, 0.9)), url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* 2. CONTENEDOR SUPERIOR: HORARIOS */
+        .horarios-card {
+            background-color: rgba(20, 27, 45, 0.85);
+            border: 2px solid #00e5ff;
+            border-radius: 16px;
+            padding: 20px 40px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+            max-width: 450px;
+            width: 100%;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .horarios-titulo {
+            color: #00e5ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .horarios-dias {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #e0e0e0;
+        }
+
+        .horarios-horas {
+            color: #ff9100;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* 3. BOTÓN CENTRAL: VER MENÚ */
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .btn-ver-menu {
+            background-color: #00e5ff;
+            color: #0b0f19;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 16px 60px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-ver-menu:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.8);
+            background-color: #ffffff;
+        }
+
+        /* 4. PIE DE PÁGINA: COORDENADAS */
+        .footer-base {
+            width: 100%;
+            max-width: 1000px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .info-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .col-titulo {
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #a0a5b5;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .col-dato {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Enlaces limpios para las redes o teléfono */
+        .info-col a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .info-col a:hover {
+            color: #00e5ff;
+        }
+
+        /* 5. RESPONSIVO PARA CELULARES */
+        @media (max-width: 768px) {
+            body {
+                justify-content: space-around;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .horarios-card {
+                padding: 15px 20px;
+            }
+            .btn-ver-menu {
+                font-size: 1.3rem;
+                padding: 14px 45px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Contenedor principal de la introducción -->
-    <main class="intro-container">
-        
-        <!-- Tu logotipo -->
-        <div class="logo-wrapper">
-            <img src="img/tu-logo-astronauta.webp" alt="Space Wings Logo" class="main-logo">
+    <!-- TARJETA SUPERIOR DE HORARIOS -->
+    <div class="horarios-card">
+        <div class="horarios-titulo">
+            🛸 HORARIOS DE VUELO 🛸
         </div>
+        <div class="horarios-dias">Jueves, Viernes y Sábado</div>
+        <div class="horarios-horas">7:00 PM a 10:30 PM</div>
+    </div>
 
-        <!-- Eslogan oficial del logo -->
-        <p class="slogan">"Las mejores alitas de la galaxia"</p>
+    <!-- BOTÓN CENTRAL -->
+    <div class="cta-container">
+        <!-- Reemplaza '#' por el enlace real a tu menú de pedidos -->
+        <a href="#" class="btn-ver-menu">Ver Menú</a>
+    </div>
 
-        <!-- NUEVA SECCIÓN: Horarios de Vuelo directos en pantalla -->
-        <div class="flight-schedule">
-            <h3>🛸 HORARIOS DE VUELO 🛸</h3>
-            <p class="days">Jueves, Viernes y Sábado</p>
-            <p class="hours">7:00 PM a 10:30 PM</p>
-        </div>
-
-        <!-- Botón de llamado a la acción (conecta a tu menú) -->
-        <a href="https://pages.dev" class="btn-enter">VER MENÚ</a>
-        
-
-<!-- NUEVO: Footer Espacial de Control con Datos Informativos -->
-        <footer class="space-footer">
-            <div class="footer-divider"></div>
-            <div class="footer-links">
-                
-                <!-- Bloque 1: Instagram -->
-                <div class="footer-block">
-                    <span class="footer-item">🪐 INSTAGRAM</span>
-                    <p class="footer-data">@spacewings.mx</p>
-                </div>
-
-                <!-- Bloque 2: WhatsApp / Teléfono -->
-                <div class="footer-block">
-                    <span class="footer-item">📞 SOPORTE BASE</span>
-                    <p class="footer-data">341 159 4355</p>
-                </div>
-
-                <!-- Bloque 3: Dirección -->
-                <div class="footer-block">
-                    <span class="footer-item">🏡 COORDENADAS</span>
-                    <p class="footer-data">Independencia #815</p>
-                </div>
-
+    <!-- PIE DE PÁGINA INFORMATIVO -->
+    <footer class="footer-base">
+        <div class="info-grid">
+            
+            <!-- Columna Instagram -->
+            <div class="info-col">
+                <span class="col-titulo">🪐 Instagram</span>
+                <span class="col-dato"><a href="https://instagram.com" target="_blank">@spacewings.mx</a></span>
             </div>
-            <p class="copyright">© 2026 SPACE WINGS. TODOS LOS DERECHOS RESERVADOS.</p>
-        </footer>
 
+            <!-- Columna Soporte -->
+            <div class="info-col">
+                <span class="col-titulo">📞 Soporte Base</span>
+                <span class="col-dato"><a href="https://wa.me" target="_blank">341 159 4355</a></span>
+            </div>
 
-        
-    </main>
+            <!-- Columna Coordenadas -->
+            <div class="info-col">
+                <span class="col-titulo">🏡 Coordenadas</span>
+                <span class="col-dato">Independencia #815</span>
+            </div>
+
+        </div>
+    </footer>
 
 </body>
 </html>
