@@ -251,4 +251,20 @@ body {
         font-size: 0.6rem !important;
     }
 }
+/* CORREGIDO: Forzamos el color blanco brillante para que resalte sobre el metal oscuro */
+.footer-data {
+    color: #ffffff !important; /* Cambiado a blanco puro */
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important; /* Sombra más fuerte para dar contraste */
+    opacity: 1 !important; /* Evita que se vea opaco o transparente */
+}
+
+/* --- AJUSTE COMPLEMENTARIO DENTRO DE @media (max-width: 480px) --- */
+/* Busca esta línea dentro de tu bloque de celulares y cámbiala para asegurar el color */
+.footer-data {
+    font-size: 0.72rem !important;
+    color: #ffffff !important; /* Asegura el blanco en pantallas móviles */
+}
 
