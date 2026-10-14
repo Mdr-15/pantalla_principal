@@ -41,26 +41,26 @@
             clip-path: circle(48% at 50% 50%);
         }  
 
-      /* BOTÓN CENTRAL DE ACCIÓN */
+     /* BOTÓN CENTRAL DE ACCIÓN (MÁS PEQUEÑO) */
 .cta-container {
-    margin-bottom: 40px;
-    text-align: center; /* Asegura que el botón esté perfectamente centrado */
+    margin-bottom: 30px;
+    text-align: center; 
 }
 
 .btn-mision {
     background-color: #00e5ff;
     color: #050b14;
-    font-size: 1rem;            /* Reducido de 1.25rem a 1rem para un texto más compacto */
+    font-size: 0.85rem;         /* Letra más pequeña y compacta */
     font-weight: bold;
-    padding: 10px 25px;         /* Reducido de 14px 45px a 10px 25px (más delgado y corto) */
-    border-radius: 6px;         /* Esquinas ligeramente más finas */
+    padding: 6px 16px;          /* Súper compacto (delgado y corto) */
+    border-radius: 4px;         /* Esquinas finas proporcionales al tamaño */
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1px;        /* Reducido de 2px a 1px para juntar más las letras */
+    letter-spacing: 0.5px;      /* Espaciado de letras mínimo */
     display: inline-flex;
     align-items: center;
-    gap: 8px;                   /* Ajustado el espacio con el ícono */
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); /* Sombra de brillo neón más discreta */
+    gap: 6px;                   /* Separación pequeña con el icono */
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.35); /* Brillo neón muy sutil */
     border: 2px solid #00e5ff;
     transition: all 0.3s ease;
 }
@@ -68,8 +68,8 @@
 .btn-mision:hover {
     background-color: transparent;
     color: #00e5ff;
-    box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
-    transform: scale(1.02);     /* Efecto de agrandado al pasar el mouse más suave */
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.6);
+    transform: scale(1.02);     
 }
 
                 /* 4. PLATILLOS PRINCIPALES (CARRUSEL DESLIZABLE) */
@@ -263,9 +263,6 @@
             text-transform: uppercase;
         }
 
-   /* ==========================================================================
-   ANEXO DE ESTILOS: MÓVIL VS COMPUTADORA (Reemplaza tus @media anteriores)
-   ========================================================================== */
 
 /* ==========================================================================
    1. CONFIGURACIÓN COMPLETA PARA COMPUTADORAS (Pantallas de 901px en adelante)
