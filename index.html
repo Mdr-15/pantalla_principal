@@ -122,15 +122,6 @@
             line-height: 1.3;
         }
 
-       @media (max-width: 900px) {
-    .menu-scroll {
-        display: flex;
-        gap: 30px;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
-        padding: 10px;
-    }
     
     .menu-scroll::-webkit-scrollbar {
         display: none; /* Oculta la barra de scroll en Chrome y Safari */
@@ -269,27 +260,68 @@
             text-transform: uppercase;
         }
 
-        /* ADAPTACIÓN PARA CELULARES */
-        @media (max-width: 768px) {
-            .menu-preview {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-            }
-            .datos-directos {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .btn-mision {
-                font-size: 1.1rem;
-                padding: 12px 30px;
-            }
-        }
-        @media (min-width: 769px) {
-            .galeria-item {
-                flex: 0 0 360px; /* Un poco más anchas en computadora */
-            }
-        }
+    /* ==========================================
+   ADAPTACIÓN PARA PANTALLAS MEDIANAS Y MÓVILES
+   ========================================== */
+
+/* 1. Regla para activar el carrusel horizontal en pantallas menores a 900px */
+@media (max-width: 900px) {
+    .menu-preview {
+        display: flex;
+        overflow-x: auto;       /* Activa el deslizamiento lateral */
+        scroll-behavior: smooth; /* Hace que el movimiento de JavaScript sea suave */
+        scrollbar-width: none;   /* Oculta la barra en Firefox */
+        gap: 30px;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .menu-preview::-webkit-scrollbar {
+        display: none;          /* Oculta la barra en Chrome, Safari y Edge */
+    }
+
+    .platillo-card {
+        flex: 0 0 85%;          /* Hace que cada platillo ocupe el 85% del ancho de la pantalla */
+        text-align: center;
+    }
+} /* <- CORRECCIÓN: Aquí cerramos correctamente la llave del media query de 900px */
+
+
+/* 2. Adaptaciones exclusivas para Celulares (Menores a 768px) */
+@media (max-width: 768px) {
+    /* CORRECCIÓN: Eliminamos 'flex-direction: column' de aquí para que no rompa el carrusel lateral */
+    .menu-preview {
+        align-items: center;
+    }
+    
+    .datos-directos {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn-mision {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+}
+
+/* 3. Ajustes para computadoras y pantallas grandes */
+@media (min-width: 769px) {
+    .menu-preview {
+        display: flex;
+        justify-content: center; /* Centra los 3 círculos en pantalla grande */
+        gap: 40px;
+    }
+
+    .galeria-item {
+        flex: 0 0 360px; /* Un poco más anchas en computadora */
+    }
+}
+    
+    
+    
+    
+    
     </style>
 </head>
 <body>
