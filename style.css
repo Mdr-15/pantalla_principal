@@ -114,48 +114,51 @@ body {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
-/* --- ADAPTACIÓN ULTRA-RESPONSIVA PARA PANTALLAS DE CELULARES (CORREGIDO) --- */
+/* --- ADAPTACIÓN ULTRA-RESPONSIVA PARA MAXIMIZAR EL FONDO EN CELULARES --- */
 @media (max-width: 480px) {
     body {
-        /* Fuerza a la cabina a rellenar el 100% del alto de la pantalla del celular sin deformarse */
+        /* Mantiene la cabina cubriendo todo el alto para evitar franjas negras */
         background-size: auto 100vh; 
-        
-        /* Centra el fondo para que la ventana y la Tierra queden en medio del teléfono */
         background-position: center center; 
-        
         background-repeat: no-repeat;
     }
 
-    /* Compactamos el contenedor para darle aire y visibilidad a los lados de la nave */
+    /* Reducimos el ancho del contenedor para que se alcancen a ver los paneles de los lados */
     .intro-container {
         padding: 10px;
-        width: 90%;
+        width: 85%;
+        max-width: 320px;
     }
 
-    /* Reducimos el tamaño del pollo astronauta para que no tape los controles del fondo */
+    /* CAMBIO CLAVE: Encojemos el logo del pollo para destapar la ventana de la nave */
     .logo-wrapper {
-        width: 170px;
-        height: 170px;
-        margin-bottom: 15px;
-        box-shadow: 0 0 30px rgba(71, 229, 240, 0.5);
+        width: 140px;  /* Bajó de 170px a 140px */
+        height: 140px;
+        margin-bottom: 12px;
+        box-shadow: 0 0 25px rgba(71, 229, 240, 0.4);
     }
 
-    /* El eslogan se hace más pequeño para no saturar la pantalla vertical */
+    /* El eslogan se vuelve más fino y discreto */
     .slogan {
-        font-size: 1rem;
-        margin-bottom: 20px;
+        font-size: 0.85rem; /* Letra más pequeña para no tapar las estrellas */
+        margin-bottom: 25px;
         letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.9); /* Un blanco sutilmente más suave */
     }
 
-    /* Ajustamos el botón para que sea cómodo y estilizado en celulares */
+    /* Optimizamos el botón para que sea estilizado y no domine el fondo */
     .btn-enter {
-        font-size: 0.95rem;
-        padding: 12px 35px;
+        font-size: 0.9rem;
+        padding: 10px 30px;
         letter-spacing: 1px;
+        box-shadow: 0 0 15px rgba(71, 229, 240, 0.6);
     }
     
+    /* El enlace secundario se vuelve muy discreto abajo */
     .btn-secondary {
-        margin-top: 15px;
+        margin-top: 20px;
         font-size: 0.8rem;
+        color: #47e5f0 !important;
+        opacity: 0.8;
     }
 }
