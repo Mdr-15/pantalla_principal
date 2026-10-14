@@ -3,211 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Wings - Bienvenidos</title>
+    <title>Space Wings - Inicio</title>
     <style>
-        /* 1. RESETEO Y FUENTES */
+        /* 1. RESETEO Y FONDO ESPACIAL */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #0b0f19;
-            /* Reemplaza esta URL por la imagen de tu fondo espacial si tienes una */
-            background-image: linear-gradient(rgba(11, 15, 25, 0.6), rgba(11, 15, 25, 0.9)), url('https://unsplash.com');
+            background-color: #050b14;
+            /* Fondo de estrellas/galaxias oscuro */
+            background-image: radial-gradient(circle at center, rgba(5, 11, 20, 0.4), #03070d), url('https://unsplash.com');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
+            background-attachment: fixed;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow: hidden;
+            min-height: 100vh;
+            padding: 20px 0;
         }
 
-        /* 2. CONTENEDOR SUPERIOR: HORARIOS */
-        .horarios-card {
-            background-color: rgba(20, 27, 45, 0.85);
-            border: 2px solid #00e5ff;
-            border-radius: 16px;
-            padding: 20px 40px;
+        /* 2. LOGO PRINCIPAL */
+        .logo-container {
             text-align: center;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-            max-width: 450px;
+            margin-bottom: 25px;
+        }
+        .logo-img {
+            max-width: 220px;
             width: 100%;
-            margin-top: 20px;
-            backdrop-filter: blur(10px);
+            filter: drop-shadow(0 0 15px rgba(255, 145, 0, 0.3));
         }
 
-        .horarios-titulo {
-            color: #00e5ff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .horarios-dias {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-            color: #e0e0e0;
-        }
-
-        .horarios-horas {
-            color: #ff9100;
-            font-size: 1.4rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        /* 3. BOTÓN CENTRAL: VER MENÚ */
+        /* 3. BOTÓN CENTRAL NEÓN */
         .cta-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
+            margin-bottom: 40px;
         }
-
-        .btn-ver-menu {
+        .btn-mision {
             background-color: #00e5ff;
-            color: #0b0f19;
-            font-size: 1.5rem;
+            color: #050b14;
+            font-size: 1.25rem;
             font-weight: bold;
-            padding: 16px 60px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
+            padding: 14px 45px;
+            border-radius: 8px;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+            border: 2px solid #00e5ff;
             transition: all 0.3s ease;
         }
-
-        .btn-ver-menu:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(0, 229, 255, 0.8);
-            background-color: #ffffff;
+        .btn-mision:hover {
+            background-color: transparent;
+            color: #00e5ff;
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.9);
+            transform: scale(1.03);
         }
 
-        /* 4. PIE DE PÁGINA: COORDENADAS */
-        .footer-base {
-            width: 100%;
+        /* 4. PLATILLOS PRINCIPALES (CÍRCULOS) */
+        .menu-preview {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
             max-width: 1000px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-bottom: 10px;
+            width: 100%;
+            margin-bottom: 45px;
+            padding: 0 20px;
+        }
+        .platillo-card {
+            flex: 1;
+            text-align: center;
+            max-width: 250px;
+        }
+        .img-circulo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid #a0a5b5;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            background-color: #101726;
+        }
+        /* Forma hexagonal para las palomitas como en tu imagen */
+        .platillo-card:last-child .img-circulo {
+            border-radius: 20px; /* Simula el contenedor geométrico */
+        }
+        .platillo-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .platillo-card p {
+            font-size: 0.9rem;
+            color: #a0a5b5;
+            line-height: 1.3;
         }
 
-        .info-grid {
+        /* 5. SECCIÓN DIRECTA: DOMICILIO Y HORARIOS (REEMPLAZA LOS BOTONES) */
+        .datos-directos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        .bloque-dato {
+            flex: 1;
+            background: rgba(16, 23, 38, 0.75);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        .dato-titulo {
+            color: #00e5ff;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .dato-contenido {
+            font-size: 1.05rem;
+            color: #e0e6ed;
+            line-height: 1.4;
+        }
+
+        /* 6. GALERÍA INFERIOR (FOTOS DE ANTOJO) */
+        .galeria-inferior {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            background: rgba(3, 7, 13, 0.8);
+        }
+        .galeria-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .galeria-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            height: 200px;
+        }
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .galeria-item:hover img {
+            transform: scale(1.06);
+        }
+        .galeria-texto {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 15px 10px 10px;
             text-align: center;
-        }
-
-        .info-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .col-titulo {
-            font-size: 0.85rem;
             font-weight: bold;
+            font-size: 0.95rem;
             letter-spacing: 1px;
-            color: #a0a5b5;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .col-dato {
-            font-size: 1rem;
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        /* Enlaces limpios para las redes o teléfono */
-        .info-col a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .info-col a:hover {
-            color: #00e5ff;
-        }
-
-        /* 5. RESPONSIVO PARA CELULARES */
+        /* 7. ADAPTACIÓN PARA CELULARES */
         @media (max-width: 768px) {
-            body {
-                justify-content: space-around;
+            .menu-preview {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
             }
-            .info-grid {
-                grid-template-columns: 1fr;
+            .datos-directos {
+                flex-direction: column;
                 gap: 15px;
             }
-            .horarios-card {
-                padding: 15px 20px;
+            .galeria-grid {
+                grid-template-columns: 1fr;
             }
-            .btn-ver-menu {
-                font-size: 1.3rem;
-                padding: 14px 45px;
+            .btn-mision {
+                font-size: 1.1rem;
+                padding: 12px 30px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- TARJETA SUPERIOR DE HORARIOS -->
-    <div class="horarios-card">
-        <div class="horarios-titulo">
-            🛸 HORARIOS DE VUELO 🛸
-        </div>
-        <div class="horarios-dias">Jueves, Viernes y Sábado</div>
-        <div class="horarios-horas">7:00 PM a 10:30 PM</div>
+    <!-- LOGO PRINCIPAL (Pon aquí la ruta de tu logo de pollo astronauta) -->
+    <div class="logo-container">
+        <img src="https://placeholder.com" alt="Space Wings" class="logo-img">
     </div>
 
     <!-- BOTÓN CENTRAL -->
     <div class="cta-container">
-        <!-- Reemplaza '#' por el enlace real a tu menú de pedidos -->
-        <a href="#" class="btn-ver-menu">Ver Menú</a>
+        <a href="#" class="btn-mision">🚀 [ Iniciar Misión: Ver Menú ] 🚀</a>
     </div>
 
-    <!-- PIE DE PÁGINA INFORMATIVO -->
-    <footer class="footer-base">
-        <div class="info-grid">
-            
-            <!-- Columna Instagram -->
-            <div class="info-col">
-                <span class="col-titulo">🪐 Instagram</span>
-                <span class="col-dato"><a href="https://instagram.com" target="_blank">@spacewings.mx</a></span>
-            </div>
+    <!-- VISTA PREVIA PLATILLOS (CÍRCULOS) -->
+    <section class="menu-preview">
+        <div class="platillo-card">
+            <!-- Cambia el link de la imagen por tus fotos reales si deseas -->
+            <img src="https://unsplash.com" alt="Alitas" class="img-circulo">
+            <h3>Alitas</h3>
+            <p>Alitas Intergalácticas:<br>Crujientes como un meteorito</p>
+        </div>
+        <div class="platillo-card">
+            <img src="https://unsplash.com" alt="Boneless" class="img-circulo">
+            <h3>Boneless</h3>
+            <p>Boneless Galácticos</p>
+        </div>
+        <div class="platillo-card">
+            <img src="https://unsplash.com" alt="Palomitas" class="img-circulo">
+            <h3>Palomitas</h3>
+            <p>Palomitas Estelares</p>
+        </div>
+    </section>
 
-            <!-- Columna Soporte -->
-            <div class="info-col">
-                <span class="col-titulo">📞 Soporte Base</span>
-                <span class="col-dato"><a href="https://wa.me" target="_blank">341 159 4355</a></span>
-            </div>
+    <!-- NUEVA SECCIÓN: DATOS DE DOMICILIO Y HORARIOS DIRECTOS -->
+    <section class="datos-directos">
+        <div class="bloque-dato">
+            <div class="dato-titulo">📍 Coordenadas de Base</div>
+            <div class="dato-contenido">Independencia #815,<br>Centro C.P. 49650</div>
+        </div>
+        <div class="bloque-dato">
+            <div class="dato-titulo">🕒 Horarios de Vuelo</div>
+            <div class="dato-contenido">Jueves, Viernes y Sábado<br><strong>7:00 PM a 10:30 PM</strong></div>
+        </div>
+    </section>
 
-            <!-- Columna Coordenadas -->
-            <div class="info-col">
-                <span class="col-titulo">🏡 Coordenadas</span>
-                <span class="col-dato">Independencia #815</span>
+    <!-- GALERÍA INFERIOR (FOTOS DE ANTOJO) -->
+    <footer class="galeria-inferior">
+        <div class="galeria-grid">
+            <div class="galeria-item">
+                <img src="https://unsplash.com" alt="Combo Estelar">
+                <div class="galeria-texto">Nuestro Combo Estelar</div>
             </div>
-
+            <div class="galeria-item">
+                <img src="https://unsplash.com" alt="Fuego Interestelar">
+                <div class="galeria-texto">Fuego Interestelar</div>
+            </div>
+            <div class="galeria-item">
+                <img src="https://unsplash.com" alt="Papas">
+                <div class="galeria-texto">Papas de la Nebulosa</div>
+            </div>
         </div>
     </footer>
 
