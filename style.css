@@ -114,51 +114,47 @@ body {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
-/* --- ADAPTACIÓN ULTRA-RESPONSIVA PARA MAXIMIZAR EL FONDO EN CELULARES --- */
+
+/* --- ADAPTACIÓN ULTRA-RESPONSIVA PARA MAXIMIZAR EL FONDO EN CELULARES (FORZADO) --- */
 @media (max-width: 480px) {
     body {
-        /* Mantiene la cabina cubriendo todo el alto para evitar franjas negras */
-        background-size: auto 100vh; 
-        background-position: center center; 
-        background-repeat: no-repeat;
+        background-size: auto 100vh !important; 
+        background-position: center center !important; 
+        background-repeat: no-repeat !important;
     }
 
-    /* Reducimos el ancho del contenedor para que se alcancen a ver los paneles de los lados */
+    /* Reducimos drásticamente el contenedor para que no tape los lados de la nave */
     .intro-container {
-        padding: 10px;
-        width: 85%;
-        max-width: 320px;
+        padding: 10px !important;
+        width: 75% !important; /* Bajó a 75% para dejar ver los paneles laterales */
+        max-width: 280px !important;
     }
 
-    /* CAMBIO CLAVE: Encojemos el logo del pollo para destapar la ventana de la nave */
+    /* Encojemos el pollo astronauta al mínimo para destapar el planeta Tierra */
     .logo-wrapper {
-        width: 140px;  /* Bajó de 170px a 140px */
-        height: 140px;
-        margin-bottom: 12px;
-        box-shadow: 0 0 25px rgba(71, 229, 240, 0.4);
+        width: 130px !important;  /* Tamaño compacto para celulares */
+        height: 130px !important;
+        margin-bottom: 15px !important;
+        box-shadow: 0 0 20px rgba(71, 229, 240, 0.4) !important;
     }
 
-    /* El eslogan se vuelve más fino y discreto */
+    /* El eslogan se vuelve muy fino para liberar el fondo */
     .slogan {
-        font-size: 0.85rem; /* Letra más pequeña para no tapar las estrellas */
-        margin-bottom: 25px;
-        letter-spacing: 1px;
-        color: rgba(255, 255, 255, 0.9); /* Un blanco sutilmente más suave */
+        font-size: 0.8rem !important; 
+        margin-bottom: 20px !important;
+        letter-spacing: 1px !important;
     }
 
-    /* Optimizamos el botón para que sea estilizado y no domine el fondo */
+    /* Botón más estilizado y compacto */
     .btn-enter {
-        font-size: 0.9rem;
-        padding: 10px 30px;
-        letter-spacing: 1px;
-        box-shadow: 0 0 15px rgba(71, 229, 240, 0.6);
+        font-size: 0.85rem !important;
+        padding: 10px 25px !important;
+        letter-spacing: 1px !important;
     }
     
-    /* El enlace secundario se vuelve muy discreto abajo */
     .btn-secondary {
-        margin-top: 20px;
-        font-size: 0.8rem;
+        margin-top: 15px !important;
+        font-size: 0.75rem !important;
         color: #47e5f0 !important;
-        opacity: 0.8;
     }
 }
