@@ -21,7 +21,7 @@ body {
     overflow: hidden;
 }
 
-/* Contenedor centralizado */
+/* Contenedor centralizado CORREGIDO */
 .intro-container {
     text-align: center;
     max-width: 500px;
@@ -30,6 +30,9 @@ body {
     flex-direction: column;
     align-items: center;
     animation: fadeIn 1.5s ease-in-out;
+    
+    /* AGREGADO: Protege a los textos de cualquier efecto visual del logo */
+    isolation: isolate; 
 }
 
 /* Contenedor del logotipo CORREGIDO (Se cerró la llave correctamente) */
