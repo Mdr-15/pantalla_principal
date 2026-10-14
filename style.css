@@ -21,7 +21,7 @@ body {
     overflow: hidden;
 }
 
-/* Contenedor centralizado CORREGIDO */
+/* Contenedor centralizado */
 .intro-container {
     text-align: center;
     max-width: 500px;
@@ -30,33 +30,22 @@ body {
     flex-direction: column;
     align-items: center;
     animation: fadeIn 1.5s ease-in-out;
-    
-    /* AGREGADO: Protege a los textos de cualquier efecto visual del logo */
-    isolation: isolate; 
 }
 
-/* Contenedor del logotipo CORREGIDO (Se cerró la llave correctamente) */
+/* Efecto de iluminación trasera para tu logotipo circular */
 .logo-wrapper {
     width: 280px;
     height: 280px;
     margin-bottom: 25px;
     border-radius: 50%;
-    overflow: hidden; /* Oculta las esquinas cuadradas si el logo tiene fondo */
-    
-    /* Mantenemos el resplandor de fondo */
+    /* Crea un resplandor naranja/cian que combina el logo con el fondo */
     box-shadow: 0 0 40px rgba(242, 142, 43, 0.4), 0 0 80px rgba(71, 229, 240, 0.2);
-    
-    /* Animación para que el pollo flote suavemente como en el espacio */
-    animation: flotarEspacial 4s ease-in-out infinite;
-    
-    /* Movido aquí para que fusione solo el cuadro del logo y no afecte a los textos de abajo */
-    mix-blend-mode: lighten; 
-} /* <-- ¡AQUÍ FALTABA ESTA LLAVE DE CIERRE! */
+}
 
 .main-logo {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta el círculo si tiene bordes extra */
+    object-fit: contain;
 }
 
 /* Estilo del eslogan */
@@ -102,19 +91,6 @@ body {
 
 .btn-secondary:hover {
     color: #47e5f0;
-}
-
-/* ANIMACIÓN: Efecto flotante de gravedad cero */
-@keyframes flotarEspacial {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-12px); /* Sube un poco */
-    }
-    100% {
-        transform: translateY(0px); /* Vuelve a su posición */
-    }
 }
 
 /* Animación de entrada suave al cargar la página */
