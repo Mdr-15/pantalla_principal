@@ -66,6 +66,12 @@
     /* OPCIÓN C: Si quieres un color sólido simple */
     --custom-bg-color: #0a1128;
 
+ 
+ /* Variables personalizadas para el banner adaptadas a tu paleta espacial */
+  --banner-bg: var(--bg-card);               /* #101726 (Azul oscuro espacial de tus tarjetas) */
+  --banner-text: var(--text-main);           /* #ffffff */
+  --banner-cyan: var(--accent-cyan);         /* #00e5ff (Cian neón para destacar) */
+  --banner-border-glow: 0 0 10px rgba(0, 229, 255, 0.4); 
 
 }
 
@@ -345,6 +351,109 @@ dialog#lightbox img {
     text-transform: uppercase;
 }
 
+ /* ==========================================================================
+   🚀 BANNER DE ANUNCIOS Y OFERTAS ESPACIAL
+   ========================================================================== */
+.banner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--banner-bg);
+  color: var(--banner-text);
+  padding: 12px 20px;
+  font-family: var(--font-stack);
+  border-bottom: 2px solid var(--banner-cyan);
+  box-shadow: var(--banner-border-glow);
+  position: relative;
+  z-index: 1000;
+  transition: var(--transition-fast);
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.banner-tag {
+  background-color: var(--banner-cyan);
+  color: #03070d; /* Fondo ultra oscuro para que resalte el texto */
+  padding: 3px 10px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 8px var(--banner-cyan);
+}
+
+.banner-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.banner-text strong {
+  color: var(--banner-cyan);
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+}
+
+.banner-btn {
+  background-color: transparent;
+  color: var(--banner-cyan);
+  border: 1px solid var(--banner-cyan);
+  padding: 5px 14px;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-neon-cyan-soft);
+}
+
+.banner-btn:hover {
+  background-color: var(--banner-cyan);
+  color: #03070d;
+  box-shadow: var(--shadow-neon-cyan-strong);
+}
+
+.banner-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: var(--transition-fast);
+}
+
+.banner-close-btn:hover {
+  color: #ff4a4a; /* Cambia a rojo al querer cerrar */
+  transform: scale(1.1);
+}
+
+/* Estado oculto */
+.banner-hidden {
+  display: none !important;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding-right: 25px;
+  }
+}
+
+
+
+
+     
 /* ==========================================================================
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================================================== */
@@ -452,6 +561,17 @@ dialog#lightbox img {
     </style>
 </head>
 <body>
+
+ <!-- Banner Estilo Neón Espacial -->
+<div id="promo-banner" class="banner-container">
+  <div class="banner-content">
+    <span class="banner-tag">¡Nueva Oferta! 🛸</span>
+    <p class="banner-text">Desbloquea un combo especial usando el código: <strong>GALAXIA20</strong></p>
+    <a href="#menu" class="banner-btn">Ver Menú</a>
+  </div>
+  <button id="close-banner" class="banner-close-btn" aria-label="Ocultar anuncio">&times;</button>
+</div>
+ 
 
     <!-- LOGO PRINCIPAL -->
     <div class="logo-container">
@@ -655,5 +775,14 @@ window.addEventListener('resize', () => iniciarAutoplayGaleria());
 
 </script>
 
+<script>
+  document.getElementById('close-banner').addEventListener('click', function() {
+    document.getElementById('promo-banner').classList.add('banner-hidden');
+  });
+</script>
+ 
+
+
+ 
 </body>
 </html>
