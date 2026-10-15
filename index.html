@@ -369,7 +369,7 @@ dialog#lightbox img {
    🚀 BANNER DE ANUNCIOS Y OFERTAS ESPACIAL (CON MARQUESINA)
    ========================================================================== */
 .banner-container {
-  display: none !important; /* 👈 OCULTAR O MOSTRAR EL BANNER DE ANUCIOS, PARA MOSTRAR SOLO COMENTA LA LINEA */
+ /* display: none !important;  👈 OCULTAR O MOSTRAR EL BANNER DE ANUCIOS, PARA MOSTRAR SOLO COMENTA LA LINEA */
  
   display: flex;
   justify-content: space-between;
@@ -629,18 +629,23 @@ dialog#lightbox img {
         line-height: 1.3;
     }
 
- /* 🎯 BOTÓN CENTRAL DE ACCIÓN EN MÓVILES (.btn-mision) */
+ /* 🎯 BOTÓN DE ACCIÓN ULTRA-COMPACTO PARA CELULARES (.btn-mision) */
     .cta-container {
-        padding: 0 var(--spacing-md); /* Espaciado lateral para que no toque los bordes de la pantalla */
-        margin-top: 15px;             /* Separa un poco el botón del logo animado */
+        padding: 0 var(--spacing-lg);
+        margin: 10px 0; /* Reduce el espacio vertical alrededor del botón */
+        text-align: center;
     }
 
     .btn-mision {
-        font-size: 0.85rem !important; /* Reduce el tamaño del texto (el original suele ser de 1.1rem o más) */
-        padding: 10px 16px !important; /* Reduce el grosor del botón para que no se vea tan tosco */
-        width: auto;                  /* Hace que el botón se adapte al texto y no ocupe toda la pantalla */
-        display: inline-block;
-        letter-spacing: 0.5px;         /* Ajusta sutilmente el espacio entre letras */
+        font-size: 0.72rem !important;  /* Letra bien pequeña y elegante */
+        padding: 6px 12px !important;   /* Bordes muy delgados para que no se vea tosco */
+        letter-spacing: 1px;            /* Espaciado de letras estilo tecnológico/futurista */
+        text-transform: uppercase;      /* Convierte a mayúsculas para mejor legibilidad en tamaños chicos */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        max-width: 90%;                 /* Evita que se estire demasiado */
     }
 }
 
