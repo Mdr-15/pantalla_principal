@@ -351,8 +351,8 @@ dialog#lightbox img {
     text-transform: uppercase;
 }
 
- /* ==========================================================================
-   🚀 BANNER DE ANUNCIOS Y OFERTAS ESPACIAL
+/* ==========================================================================
+   🚀 BANNER DE ANUNCIOS Y OFERTAS ESPACIAL (CON MARQUESINA)
    ========================================================================== */
 .banner-container {
   display: flex;
@@ -369,13 +369,25 @@ dialog#lightbox img {
   transition: var(--transition-fast);
 }
 
-.banner-content {
+/* 🛸 Nuevo contenedor para envolver y ocultar el desborde del texto */
+.banner-ticker {
+  flex: 1;
+  overflow: hidden; 
   display: flex;
   align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
+  margin: 0 15px;
+}
+
+/* ✨ Animación para mover el texto infinitamente */
+.ticker-wrap {
+  display: flex;
+  width: max-content;
+  animation: desplazarTexto 25s linear infinite; /* Modifica los '25s' para cambiar la velocidad */
+}
+
+/* 🛑 Pausa la marquesina al poner el mouse o el dedo encima */
+.ticker-wrap:hover {
+  animation-play-state: paused; 
 }
 
 .banner-tag {
@@ -388,12 +400,15 @@ dialog#lightbox img {
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 0 8px var(--banner-cyan);
+  flex-shrink: 0; /* Evita que la etiqueta se aplaste */
 }
 
 .banner-text {
   margin: 0;
   font-size: 0.95rem;
   color: var(--text-light);
+  white-space: nowrap; /* Fuerza a que todo el texto se mantenga en una sola línea horizontal */
+  padding-right: 50px; /* Separación al final de la frase antes de que empiece la repetida */
 }
 
 .banner-text strong {
@@ -412,6 +427,7 @@ dialog#lightbox img {
   font-weight: 600;
   transition: var(--transition-fast);
   box-shadow: var(--shadow-neon-cyan-soft);
+  flex-shrink: 0; /* Evita que el botón se reduzca */
 }
 
 .banner-btn:hover {
@@ -428,6 +444,7 @@ dialog#lightbox img {
   cursor: pointer;
   padding: 0 5px;
   transition: var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .banner-close-btn:hover {
@@ -440,20 +457,18 @@ dialog#lightbox img {
   display: none !important;
 }
 
-/* Responsivo para celulares */
-@media (max-width: 768px) {
-  .banner-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding-right: 25px;
+/* ==========================================================================
+   🎬 ANIMACIÓN MATEMÁTICA DE LA MARQUESINA
+   ========================================================================== */
+@keyframes desplazarTexto {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0); /* Mueve exactamente la mitad para reiniciar el ciclo de forma fluida */
   }
 }
 
-
-
-
-     
 /* ==========================================================================
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================================================== */
@@ -495,6 +510,46 @@ dialog#lightbox img {
 
 /* 2. CONFIGURACIÓN COMPLETA PARA CELULARES Y TABLETS (Pantallas de 900px hacia abajo) */
 @media (max-width: 900px) {
+    /* 🛸 Optimización del Banner Espacial en móviles */
+    .banner-container {
+        padding: 8px 12px; 
+    }
+
+    .banner-content {
+        flex-direction: row;      
+        justify-content: flex-start; 
+        gap: 8px;                 
+        padding-right: 20px;      
+    }
+
+    .banner-tag {
+        font-size: 0.65rem;       
+        padding: 2px 6px;
+        flex-shrink: 0;           
+    }
+
+    .banner-text {
+        font-size: 0.75rem;       
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    .banner-btn {
+        font-size: 0.7rem;        
+        padding: 3px 8px;
+        margin-left: auto;        
+        flex-shrink: 0;           
+    }
+
+    .banner-close-btn {
+        font-size: 1.3rem;        
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%); 
+    }
+
+    /* 🍔 Estilos de tu menú y componentes existentes */
     .menu-preview {
         overflow-x: auto;
         scroll-behavior: smooth;
@@ -502,6 +557,7 @@ dialog#lightbox img {
         gap: 30px;
         padding: var(--spacing-lg);
         width: 100%;
+        align-items: center;
     }
 
     .menu-preview::-webkit-scrollbar {
@@ -525,10 +581,6 @@ dialog#lightbox img {
 
     .galeria-item {
         flex: 0 0 80%;
-    }
-
-    .menu-preview {
-        align-items: center;
     }
     
     .datos-directos {
@@ -562,15 +614,26 @@ dialog#lightbox img {
 </head>
 <body>
 
- <!-- Banner Estilo Neón Espacial -->
+ <!-- Banner con Texto en Desplazamiento Espacial -->
 <div id="promo-banner" class="banner-container">
-  <div class="banner-content">
-    <span class="banner-tag">¡Nueva Oferta! 🛸</span>
-    <p class="banner-text">Desbloquea un combo especial usando el código: <strong>GALAXIA20</strong></p>
-    <a href="#menu" class="banner-btn">Ver Menú</a>
+  <span class="banner-tag">¡ALERTA DE OFERTA! 🛸</span>
+  
+  <div class="banner-ticker">
+    <div class="ticker-wrap">
+      <p class="banner-text">
+        🛸 ¡Desbloquea un combo especial usando el código: <strong>GALAXIA20</strong>! 🪐 Aprovecha un 20% de descuento en tus alitas favoritas hoy. 🚀 ¡Envío gratis en tu primer pedido de la misión! &nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+      <!-- Repetimos el texto para que el bucle se vea infinito y sin cortes -->
+      <p class="banner-text" aria-hidden="true">
+        🛸 ¡Desbloquea un combo especial usando el código: <strong>GALAXIA20</strong>! 🪐 Aprovecha un 20% de descuento en tus alitas favoritas hoy. 🚀 ¡Envío gratis en tu primer pedido de la misión! &nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+    </div>
   </div>
+
+  <a href="#menu" class="banner-btn">Ver Menú</a>
   <button id="close-banner" class="banner-close-btn" aria-label="Ocultar anuncio">&times;</button>
 </div>
+
  
 
     <!-- LOGO PRINCIPAL -->
