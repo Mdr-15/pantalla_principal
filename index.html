@@ -262,6 +262,38 @@ body {
 }
 
 /* GALERÍA INFERIOR (CARRUSEL DESLIZABLE) */
+.galeria-inferior {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 0;
+    background: rgba(3, 7, 13, 0.8);
+    text-align: center;
+}
+
+.galeria-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.galeria-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.galeria-container::-webkit-scrollbar-thumb {
+    background: var(--accent-cyan);
+    border-radius: 10px;
+}
+
+.galeria-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
 .galeria-item {
     flex: 0 0 300px;
     scroll-snap-align: center;
@@ -269,30 +301,32 @@ body {
     border-radius: var(--border-radius-md);
     overflow: hidden;
     border: 1px solid rgba(0, 229, 255, 0.2);
-    
-    /* 📈 CAMBIO 1: Subimos la altura de 220px a 240px para dar más espacio vertical 
-       y que la comida no tape el texto inferior */
-    height: 240px; 
-    
+    height: 220px;
     box-shadow: var(--shadow-dark);
     cursor: pointer;
     transition: var(--transition-fast);
-    
-    /* 🎨 Añade un color de fondo base para que combine con tus imágenes */
-    background-color: #03070d; 
 }
 
 .galeria-item img {
     width: 100%;
-    
-    /* 📉 CAMBIO 2: Reducimos ligeramente la altura de la imagen al 88% 
-       para dejarle un margen libre al texto negro de abajo y evitar que se encimen */
-    height: 88%; 
-    
-    /* 🛡️ CAMBIO 3: La clave definitiva. Cambiamos 'cover' por 'contain' 
-       para que la foto se encoja y se vea COMPLETAMENTE entera sin recortes */
-    object-fit: contain; 
+    height: 100%;
+    object-fit: cover;
 }
+
+.galeria-texto {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+    padding: var(--spacing-lg) 10px var(--spacing-md);
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    color: var(--text-main);
+}
+
 /* EFECTO LIGHTBOX (FOTO AGRANDADA) */
 dialog#lightbox {
     border: none;
