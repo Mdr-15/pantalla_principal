@@ -82,6 +82,20 @@
    ESTILOS BASE & COMPONENTES
    ========================================================================== */
 
+     /* 🛡️ BLOQUEO ABSOLUTO DE DESPLAZAMIENTO LATERAL */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Corta por completo cualquier desborde horizontal */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+     
+
 * {
     margin: 0;
     padding: 0;
@@ -367,16 +381,21 @@ dialog#lightbox img {
   position: relative;
   z-index: 1000;
   transition: var(--transition-fast);
-  overflow: hidden;
+  
+  /* 🚨 Cruciales para evitar el error en móviles */
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; 
 }
 
-/* 🛸 Nuevo contenedor para envolver y ocultar el desborde del texto */
+
 .banner-ticker {
   flex: 1;
-  overflow: hidden; 
+  overflow: hidden; /* Asegura que el texto que sale de la pantalla no se calcule */
   display: flex;
   align-items: center;
   margin: 0 15px;
+  max-width: 100%; /* Delimita el ancho total */
 }
 
 /* ✨ Animación para mover el texto infinitamente */
