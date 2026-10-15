@@ -382,12 +382,12 @@ dialog#lightbox img {
   z-index: 1000;
   transition: var(--transition-fast);
   
-  /* 🚨 Cruciales para evitar el error en móviles */
+  /* 🛡️ Evitan el error de arrastre en móviles */
   width: 100%;
   max-width: 100%;
   overflow: hidden; 
+  box-sizing: border-box; /* 👈 CLAVE: Evita que los paddings ensanchen el banner */
 }
-
 
 .banner-ticker {
   flex: 1;
@@ -402,7 +402,7 @@ dialog#lightbox img {
 .ticker-wrap {
   display: flex;
   width: max-content;
-  animation: desplazarTexto 25s linear infinite; /* Modifica los '25s' para cambiar la velocidad */
+  animation: desplazarTexto 25s linear infinite; 
 }
 
 /* 🛑 Pausa la marquesina al poner el mouse o el dedo encima */
@@ -412,7 +412,7 @@ dialog#lightbox img {
 
 .banner-tag {
   background-color: var(--banner-cyan);
-  color: #03070d; /* Fondo ultra oscuro para que resalte el texto */
+  color: #03070d; 
   padding: 3px 10px;
   font-weight: bold;
   font-size: 0.75rem;
@@ -420,15 +420,15 @@ dialog#lightbox img {
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 0 8px var(--banner-cyan);
-  flex-shrink: 0; /* Evita que la etiqueta se aplaste */
+  flex-shrink: 0; 
 }
 
 .banner-text {
   margin: 0;
   font-size: 0.95rem;
   color: var(--text-light);
-  white-space: nowrap; /* Fuerza a que todo el texto se mantenga en una sola línea horizontal */
-  padding-right: 50px; /* Separación al final de la frase antes de que empiece la repetida */
+  white-space: nowrap; 
+  padding-right: 50px; 
 }
 
 .banner-text strong {
@@ -447,7 +447,7 @@ dialog#lightbox img {
   font-weight: 600;
   transition: var(--transition-fast);
   box-shadow: var(--shadow-neon-cyan-soft);
-  flex-shrink: 0; /* Evita que el botón se reduzca */
+  flex-shrink: 0; 
 }
 
 .banner-btn:hover {
@@ -468,7 +468,7 @@ dialog#lightbox img {
 }
 
 .banner-close-btn:hover {
-  color: #ff4a4a; /* Cambia a rojo al querer cerrar */
+  color: #ff4a4a; 
   transform: scale(1.1);
 }
 
@@ -476,7 +476,7 @@ dialog#lightbox img {
 .banner-hidden {
   display: none !important;
 }
-
+     
 /* ==========================================================================
    🎬 ANIMACIÓN MATEMÁTICA DE LA MARQUESINA
    ========================================================================== */
